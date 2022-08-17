@@ -6,30 +6,29 @@ class Bowling
         @tries2 = [] 
     end
 
-    def random
-        @number_pins = rand(0..10)
-        puts @number_pins
-    end  
     def tries
+        10.times do   
+
+        @number_pins = rand(0..10)
+        #puts @number_pins
+        a = @number_pins
+        b = 10 -a
+        @number_pins2 = rand(0..b)
+        c = @number_pins2
         
-        10.times do     
-            @tries << random
-            count = 0
+            #puts random1
+            @tries << a
 
-            if @tries != 10    
-                @tries2 << random
-
-                if (@tries[count] + @tries2[count]) <= 10
-                    @tries2 << random
-                end
-                puts @tries2.join
-
-            else
-                @tries2 = 0
-            end
-            count += 1
+            #puts random2
+            #puts random1 + random2
+           
+            @tries2 << c
+          
         end
-        puts @tries.join
+        puts @tries
+        puts "*"
+        puts @tries2
+        
     end
 end
 
