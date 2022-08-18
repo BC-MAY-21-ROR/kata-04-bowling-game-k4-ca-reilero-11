@@ -1,4 +1,5 @@
 class Bowling
+    attr_accessor :tries, :tries2
     def initialize
         @number_pins
         @frames = []
@@ -32,5 +33,16 @@ class Bowling
     end
 end
 
+class Frames
+    def initialize
+        @tries
+        @tries2
+    end
+    def number_frames()
+       @tries.index(0) + @tries2.index(0)
+    end
+end 
+
 
 Bowling.new.tries
+Frames.new.number_frames
