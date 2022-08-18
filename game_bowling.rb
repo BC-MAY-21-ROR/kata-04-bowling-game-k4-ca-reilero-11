@@ -37,6 +37,20 @@ class Bowling
         puts @tries2 
         puts "*suma" 
         puts @frames
+        contador2 = 0
+        10.times do
+            if contador2 == 0 
+                 puts 'contador == 0'
+                 puts @frames[contador2] 
+            # elsif contador2 > 0 and contador2 <= 9
+            #     puts 'contador > 0 and contador <= 9'
+            #  puts @frames[contador2] +tries[contador2+1] + @frames[contador2-1]
+            # else
+            #     puts @frames[contador2] + tries[contador2+1] + @frames[contador2-1]
+             end
+            
+          contador2 =contador2+1
+        end     
     end
    
 end
