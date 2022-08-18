@@ -8,11 +8,12 @@ class Bowling
     end
 
     def tries
+        
         10.times do   
-
         @number_pins = rand(0..10)
         #puts @number_pins
         a = @number_pins
+
         b = 10 -a
         @number_pins2 = rand(0..b)
         c = @number_pins2
@@ -24,25 +25,25 @@ class Bowling
             #puts random1 + random2
            
             @tries2 << c
-          
+           
         end
-        puts @tries
-        puts "*"
-        puts @tries2
-        
+        contador = 0
+        10.times do 
+            @frames << (@tries[contador] + @tries2[contador]) 
+            contador = contador + 1 
+        end 
+        puts @tries 
+        puts "*" 
+        puts @tries2 
+        puts "*suma" 
+        puts @frames
     end
+   
 end
 
-class Frames
-    def initialize
-        @tries
-        @tries2
-    end
-    def number_frames()
-       @tries.index(0) + @tries2.index(0)
-    end
-end 
+
+    
 
 
 Bowling.new.tries
-Frames.new.number_frames
+
