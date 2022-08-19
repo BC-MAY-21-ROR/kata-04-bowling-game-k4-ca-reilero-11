@@ -3,4 +3,6 @@
 source "https://rubygems.org"
 
 # gem "rails"
-gem "rubycritic"
+gem "rspec"
+gem "rubycritic", require: false
+gem "sandi_meter"

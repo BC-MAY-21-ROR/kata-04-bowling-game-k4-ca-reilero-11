@@ -1,9 +1,5 @@
 class Bowling
-  attr_accessor :tries, :tries2
-
   def initialize
-    @number_pins
-    @frames = []
     @tries = []
     @tries2 = []
   end
@@ -15,8 +11,6 @@ class Bowling
   end
 
   def tries
-    score = 0
-
     10.times do
       pins
       @tries << @number_pins
@@ -25,24 +19,24 @@ class Bowling
 
     points_total = 0
 
-    @tries.each_with_index do |tries, index|
-      if @tries[index] == 10
-        puts "#{@tries[index]} || #{@tries2[index]}"
+    @tries.each_with_index do |_tries, index|
+      try = @tries[index]
+      try2 = @tries2[index]
+
+      if try == 10
         puts "Frame #{index + 1} Strike"
-        points = @tries[index].to_i + @tries2[index].to_i + strikes(tries, tries2,
-                                                                    index) + position_after(tries, tries2, index)
+        puts "#{try} || #{try2}"
+        points = strikes(index) + sum_points(index)
         puts points
-      elsif @tries[index] + @tries2[index] == 10
-        puts "#{@tries[index]} || #{@tries2[index]}"
+      elsif try + try2 == 10
         puts "Frame #{index + 1} Spare"
-        points = @tries[index].to_i + @tries2[index].to_i + spare(tries, tries2,
-                                                                  index) + position_after(tries, tries2,
-                                                                                          index)
+        puts "#{try} || #{try2}"
+        points = spare(index) + sum_points(index)
         puts points
       else
         puts "Frame #{index + 1}"
-        points = @tries[index].to_i + @tries2[index].to_i + position_after(tries, tries2, index)
-        puts "#{@tries[index]} || #{@tries2[index]}"
+        points = sum_points(index)
+        puts "#{try} || #{try2}"
       end
       points_total += points
       puts points_total
@@ -50,20 +44,28 @@ class Bowling
     end
   end
 
-  def position_after(_tries, _tries2, index)
-    if index > 0
-      @tries[index - 1].to_i + @tries2[index - 1].to_i
+  def position_after(index)
+    if index.positive?
+      @tries[index - 1] + @tries2[index - 1]
     else
       0
     end
   end
 
-  def strikes(_tries, _tries2, index)
+  def sum_tries(index)
+    @tries[index] + @tries2[index]
+  end
+
+  def strikes(index)
     @tries[index + 1].to_i + @tries2[index + 1].to_i
   end
 
-  def spare(_tries, _tries2, index)
+  def spare(index)
     @tries[index + 1].to_i
+  end
+
+  def sum_points(index)
+    sum_tries(index) + position_after(index)
   end
 end
 
